@@ -1,23 +1,46 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
+import {Link, useNavigate} from "react-router-dom"
+
 
 
 function AddCard(props) {
+  const navigate = useNavigate
+  const [formData, setFormData] = useState({
+    title: ""
+  })
+
+  const handleChange = evt => {
+    setFormData({ ...formData, [evt.target.name]: evt.target.value })
+	}
+
+  const handleSubmit = async e => {
+    e.preventDefault()
+    try { 
+      //call to backend goes here  
+      navigate('/')
+    } catch (err) {
+      
+    }
+	}
+
   return (
     <>
       <h1>Add a Card</h1>
-      <form autoComplete='off'>
+      <form autoComplete='off' ref={formElement} onSubmit={handleSubmit}>
         <div className='card-title'>
           <label>
             Title: 
           </label>
-          <input
+          <input 
             type="text"
             className='card-title'
             name="title"
+            value={formData.title}
+            onChange={handleChange}
             required
           />
           </div>
-          <div className='card-term'>
+          {/* <div className='card-term'>
           <label>
             Term: 
           </label>
@@ -41,7 +64,7 @@ function AddCard(props) {
               cols="10" 
               rows="6">
             </textarea> 
-        </div>
+        </div> */}
         <div className='submit-btn'>
           <button
             type='submit'
