@@ -16,7 +16,7 @@ function AddCard(props) {
   const handleSubmit = async e => {
     e.preventDefault()
     try { 
-      //call to backend goes here  
+      props.handleAddCard(formData) 
       navigate('/')
     } catch (err) {
       console.log(err)
