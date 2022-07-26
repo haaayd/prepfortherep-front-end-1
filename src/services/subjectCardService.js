@@ -15,5 +15,13 @@ async function create(cardData) {
     return await res.json()
 }
 
+async function getAll() {
+    const res = await fetch(BASE_URL)
+    return await res.json()
+}
 
-export { create }
+
+export { 
+    create,
+    getAll
+}

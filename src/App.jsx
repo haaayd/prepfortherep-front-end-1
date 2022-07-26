@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
@@ -19,6 +19,14 @@ const App = () => {
     setUser(null)
     navigate('/')
   }
+
+  useEffect(() => {
+    const fetchAllCards = async () => {
+      const cardData = await subjectCardService.getAll()
+      setCards(cardData)
+    }
+    fetchAllCards()
+  }, [] )
 
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
