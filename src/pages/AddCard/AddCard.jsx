@@ -41,6 +41,15 @@ function AddCard(props) {
               cols="10" 
               rows="6">
             </textarea> 
+        </div>
+        <div className='submit-btn'>
+          <button
+            type='submit'
+            className='sub-btn'
+            >
+            Submit
+
+          </button>
 
         </div>
 
