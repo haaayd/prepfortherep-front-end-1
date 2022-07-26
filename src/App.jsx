@@ -8,6 +8,7 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import AddSubjectCard from './pages/AddSubjectCard/AddSubjectCard'
 import * as subjectCardService from "./services/subjectCardService"
+import Cards from './pages/Cards/Cards'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -42,7 +43,17 @@ const App = () => {
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/add" element={<AddSubjectCard handleAddCard={handleAddCard}/>} />
+        <Route 
+          path="/add" 
+          element={<AddSubjectCard 
+          handleAddCard={handleAddCard} />}
+          />
+        <Route 
+          path="/" 
+          element={<Cards cards={cards} />}
+          />
+          
+
 
         <Route
           path="/signup"
