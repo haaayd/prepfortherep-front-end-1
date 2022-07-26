@@ -1,9 +1,9 @@
-const PostCard = (props) => {
+const PostCard = ({card}) => {
   return (  
     <>
       <div className="card">
           <div className="card-body">
-            <h2>{props.card.title}</h2>
+            <h2>{card.title}</h2>
 
           </div>
       </div>
