@@ -7,9 +7,12 @@ import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
+import AddCard from './pages/AddCard/AddCard'
+import * as cardService from "./services/cardService"
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
+  const [cards, setCards] = useState([])
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -22,11 +25,22 @@ const App = () => {
     setUser(authService.getUser())
   }
 
+  const handleAddCard = async cardData => {
+    const newCard = await cardService.create(cardData)
+    setCards([...cards, newCard])
+    navigate("/")
+  }
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Landing user={user} />} />
+        <Route
+          path="/add-card"
+          element={<AddCard handleAddCard={handleAddCard}/>}
+        />
+
         <Route
           path="/signup"
           element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
