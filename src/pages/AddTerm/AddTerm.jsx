@@ -8,7 +8,6 @@ function AddTerm(props) {
   const [formData, setFormData] = useState({
     term: '',
     definition: '',
-    mastered: false
   })
 
   const handleChange = evt => {
@@ -24,10 +23,10 @@ function AddTerm(props) {
     }
 	}
 
-  const {term, definition, mastered} = formData
+  const {term, definition, } = formData
 
   const isFormInvalid = () => {
-    return !(term && definition && mastered)
+    return !(term && definition )
   }
 
   return (
@@ -56,7 +55,7 @@ function AddTerm(props) {
     </label>
      <textarea 
          name="definition" 
-         value={formData.term}
+         value={formData.definition}
          onChange={handleChange}
          id="term-card" 
          cols="10" 

@@ -14,6 +14,7 @@ import AddTerm from './pages/AddTerm/AddTerm'
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [cards, setCards] = useState([])
+  const [terms, setTerms] = useState([])
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -39,6 +40,11 @@ const App = () => {
     setCards([...cards, newCard])
     navigate("/")
   }
+  const handleAddTerm = async termData => {
+    const newTerm = await subjectCardService.createTerm(termData)
+    setTerms([...terms, newTerm])
+    navigate("/cards/:cardid/terms")
+  }
 
   return (
     <>
@@ -55,7 +61,7 @@ const App = () => {
           />
         <Route 
           path="/cards/:cardId/terms" 
-          element={<AddTerm cards={cards} />}
+          element={<AddTerm cards={cards} handleAddTerm={handleAddTerm} />}
           />
         <Route
           path="/signup"
