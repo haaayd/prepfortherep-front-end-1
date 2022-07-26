@@ -52,9 +52,10 @@ const App = () => {
           path="/" 
           element={<Cards cards={cards} />}
           />
-          
-
-
+        <Route 
+          path="/cards/:cardId" 
+          element={<Cards cards={cards} />}
+          />
         <Route
           path="/signup"
           element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
