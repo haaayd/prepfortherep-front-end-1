@@ -1,6 +1,6 @@
-import * as tokenService from '../services/tokenService'
+import * as tokenService from './tokenService'
 
-const BASE_URL = `${process.env.REACT_APP_BACK_END_SERVER_URL}/api/cards`
+const BASE_URL = `${process.env.REACT_APP_BACK_END_SERVER_URL}/api/subjectcards`
 
 async function create(cardData) {
     const res = await fetch(BASE_URL, {

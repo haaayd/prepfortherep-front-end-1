@@ -3,7 +3,7 @@ import {Link, useNavigate} from "react-router-dom"
 
 
 
-function AddCard(props) {
+function AddSubjectCard(props) {
   const navigate = useNavigate
   const [formData, setFormData] = useState({
     title: ""
@@ -91,4 +91,4 @@ function AddCard(props) {
   )
 }
 
-export default AddCard
+export default AddSubjectCard
