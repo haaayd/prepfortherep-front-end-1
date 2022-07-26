@@ -9,10 +9,12 @@ import * as authService from './services/authService'
 import AddSubjectCard from './pages/AddSubjectCard/AddSubjectCard'
 import * as subjectCardService from "./services/subjectCardService"
 import Cards from './pages/Cards/Cards'
+import AddTerm from './pages/AddTerm/AddTerm'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [cards, setCards] = useState([])
+  const [terms, setTerms] = useState([])
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -38,6 +40,11 @@ const App = () => {
     setCards([...cards, newCard])
     navigate("/")
   }
+  const handleAddTerm = async termData => {
+    const newTerm = await subjectCardService.createTerm(termData)
+    setTerms([...terms, newTerm])
+    navigate("/cards/:cardid/terms")
+  }
 
   return (
     <>
@@ -53,8 +60,8 @@ const App = () => {
           element={<Cards cards={cards} />}
           />
         <Route 
-          path="/cards/:cardId" 
-          element={<Cards cards={cards} />}
+          path="/cards/:cardId/terms" 
+          element={<AddTerm cards={cards} handleAddTerm={handleAddTerm} />}
           />
         <Route
           path="/signup"
