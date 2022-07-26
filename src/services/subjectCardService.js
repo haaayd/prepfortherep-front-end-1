@@ -16,8 +16,10 @@ async function create(cardData) {
 }
 
 async function getAll() {
-    const res = await fetch(BASE_URL)
-    return await res.json()
+    const res = await fetch(BASE_URL, {
+        headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return res.json()
 }
 
 
