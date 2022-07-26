@@ -37,6 +37,9 @@ function AddSubjectCard(props) {
           <label>
             Title: 
           </label>
+          <h1>
+            to commit 
+          </h1>
           <input 
             type="text"
             className='card-title'
