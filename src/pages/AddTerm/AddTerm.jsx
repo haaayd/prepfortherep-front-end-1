@@ -82,4 +82,4 @@ function AddTerm(props) {
   )
 }
 
-export default AddSubjectCard
+export default AddTerm
