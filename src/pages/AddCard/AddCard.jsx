@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState } from 'react'
 import {Link, useNavigate} from "react-router-dom"
 
 
@@ -19,14 +19,20 @@ function AddCard(props) {
       //call to backend goes here  
       navigate('/')
     } catch (err) {
-      
+      console.log(err)
     }
 	}
+
+  const {title} = formData
+
+  const isFormInvalid = () => {
+    return !(title)
+  }
 
   return (
     <>
       <h1>Add a Card</h1>
-      <form autoComplete='off' ref={formElement} onSubmit={handleSubmit}>
+      <form autoComplete='off' onSubmit={handleSubmit}>
         <div className='card-title'>
           <label>
             Title: 
@@ -69,10 +75,14 @@ function AddCard(props) {
           <button
             type='submit'
             className='sub-btn'
+            disabled={isFormInvalid()}
             >
             Submit
 
           </button>
+          <Link to="/">
+          <button>Cancel</button>
+        </Link>
 
         </div>
 
