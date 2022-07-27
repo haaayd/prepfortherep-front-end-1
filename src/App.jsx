@@ -41,8 +41,9 @@ const App = () => {
     navigate("/")
   }
 
-  const handleDeleteCard = id => {
-    setCards(cards.filter(card => card._id !== id))
+  const handleDeleteCard = async id => {
+    const deletedCard = await subjectCardService.deleteCard(id)
+    setCards(cards.filter(card => card._id !== deletedCard._id))
   }
   // const handleAddTerm = async termData => {
   //   const newTerm = await subjectCardService.createTerm(termData)
