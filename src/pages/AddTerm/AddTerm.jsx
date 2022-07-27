@@ -3,6 +3,7 @@ import {Link, useNavigate} from "react-router-dom"
 
 
 
+
 function AddTerm(props) {
   const navigate = useNavigate
   const [formData, setFormData] = useState({
@@ -14,16 +15,17 @@ function AddTerm(props) {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
 	}
 
-  const handleSubmit = async e => {
+  const handleTermSubmit = async e => {
     e.preventDefault()
     try { 
+      props.handleAddTerm(formData)
       navigate('/cards')
     } catch (err) {
       console.log(err)
     }
 	}
 
-  const {term, definition, } = formData
+  const {term, definition } = formData
 
   const isFormInvalid = () => {
     return !(term && definition )
@@ -31,7 +33,7 @@ function AddTerm(props) {
 
   return (
     <>
-    <form autoComplete='off' onSubmit={handleSubmit}>
+    <form autoComplete='off' onSubmit={handleTermSubmit}>
       <div className='card-term'>
         <label>
         Term: 
