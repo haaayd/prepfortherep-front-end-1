@@ -10,7 +10,13 @@ const PostCard = ({card}) => {
             <p>DefinitIon:
               {card.definition}</p>
             {/* <p>Mastered:
-              {card.m = true ? '' : false } </p> */}
+              {card.m = true ? 'checked' : false } </p> */}
+
+          </div>
+          <div className="d-btn">
+            <button className="del">
+              X
+            </button>
 
           </div>
       </div>
