@@ -36,6 +36,7 @@ function AddSubjectCard(props) {
     return !(title)
   }
 
+
   return (
     <div className={styles.addF}>
       <h1>Add a Card</h1>
@@ -118,3 +119,4 @@ function AddSubjectCard(props) {
 }
 
 export default AddSubjectCard
+
