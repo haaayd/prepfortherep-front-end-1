@@ -1,0 +1,17 @@
+.cardContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.wrapper{
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  background-color: #f9d26b;
+  /* color: white; */
+  border: solid 2px white;
+  width: 30%;
+  border-radius: 20px;
+}
+

@@ -1,8 +1,10 @@
+import styles from './PostCard.module.css'
 const PostCard = ({card, handleDeleteCard, user}) => {
   return (  
     <>
-      <div className="card">
-          <div className="card-body">
+    <div className={styles.cardContainer}>
+      <div className={styles.wrapper}>
+          <div className={styles.card}>
             <h1>Title:
               {card.title}</h1>
             <p>Term:
@@ -26,7 +28,7 @@ const PostCard = ({card, handleDeleteCard, user}) => {
           </div>
           }
       </div>
-    
+    </div>
     </>
   );
 }

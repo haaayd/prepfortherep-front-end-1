@@ -1,0 +1,30 @@
+.navbar {
+  background-color: #f9d26b;
+  padding: 15px;
+}
+
+.navv{
+  display: flex;
+  justify-content: center;
+
+}
+.wel {
+  display: flex;
+  justify-content: left;
+}
+.nav{
+  width: 100px;
+  background-color: #9babaa;
+  border-radius: 7px;
+  margin-left: 12px;
+  justify-content: flex-end;
+
+}
+a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  text-shadow: black;
+  font-size: 15px;
+  text-shadow: black;
+}
