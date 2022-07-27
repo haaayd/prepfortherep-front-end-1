@@ -6,12 +6,18 @@ import {Link, useNavigate} from "react-router-dom"
 function AddSubjectCard(props) {
   const navigate = useNavigate
   const [formData, setFormData] = useState({
-    title: ""
+    title: "",
+    term: "",
+    definition: "",
+    // m: false,
   })
 
   const handleChange = evt => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
 	}
+  // const handleToggle = (evt) => {
+  //   setFormData({ ...setFormData,[evt.target.name]: !!evt.target.value })
+  // }
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -47,12 +53,14 @@ function AddSubjectCard(props) {
             required
           />
           </div>
-          {/* <div className='card-term'>
+          <div className='card-term'>
           <label>
             Term: 
           </label>
             <textarea 
-              name="term" 
+              name="term"
+              onChange={handleChange}
+              value={formData.term}
               id="term-card" 
               cols="10" 
               rows="6">
@@ -66,12 +74,27 @@ function AddSubjectCard(props) {
             Definition:
           </label>
           <textarea 
-              name="definition" 
+              name="definition"
+              value={formData.definition}
+              onChange={handleChange}
               id="term-card" 
               cols="10" 
               rows="6">
             </textarea> 
-        </div> */}
+        </div>
+        {/* <div className='card-mastered'>
+          <label>
+            Mastered:
+          </label>
+          <input 
+            type="checkbox"
+            className='card-m'
+            name="mastered"
+            value={formData.m}
+            onChange={handleToggle}
+            />
+            
+          </div> */}
         <div className='submit-btn'>
           <button
             type='submit'
