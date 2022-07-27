@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import {Link, useNavigate} from "react-router-dom"
+import styles from './AddSubjectCard.module.css'
 
 
 
@@ -36,17 +37,16 @@ function AddSubjectCard(props) {
   }
 
   return (
-    <>
+    <div className={styles.addF}>
       <h1>Add a Card</h1>
       <form autoComplete='off' onSubmit={handleSubmit}>
         <div className='card-title'>
           <label>
             Title: 
           </label>
-
           <input 
             type="text"
-            className='card-title'
+            className={styles.input}
             name="title"
             value={formData.title}
             onChange={handleChange}
@@ -59,6 +59,7 @@ function AddSubjectCard(props) {
           </label>
             <textarea 
               name="term"
+              className={styles.input}
               onChange={handleChange}
               value={formData.term}
               id="term-card" 
@@ -75,6 +76,7 @@ function AddSubjectCard(props) {
           </label>
           <textarea 
               name="definition"
+              className={styles.input}
               value={formData.definition}
               onChange={handleChange}
               id="term-card" 
@@ -111,7 +113,7 @@ function AddSubjectCard(props) {
         </div>
 
       </form>
-    </>
+    </div>
   )
 }
 
