@@ -40,6 +40,11 @@ const App = () => {
     setCards([...cards, newCard])
     navigate("/")
   }
+
+  const handleDeleteCard = async id => {
+    const deletedCard = await subjectCardService.deleteCard(id)
+    setCards(cards.filter(card => card._id !== deletedCard._id))
+  }
   // const handleAddTerm = async termData => {
   //   const newTerm = await subjectCardService.createTerm(termData)
   //   setTerms([...terms, newTerm])
@@ -57,7 +62,7 @@ const App = () => {
           />
         <Route 
           path="/" 
-          element={<Cards cards={cards} />}
+          element={<Cards cards={cards} handleDeleteCard={handleDeleteCard} user={user}/>}
           />
         {/* <Route 
           path="/:id/terms" 

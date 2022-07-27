@@ -21,6 +21,18 @@ async function getAll() {
     })
     return res.json()
 }
+
+async function deleteCard(id) {
+    const res = await fetch(`${BASE_URL}/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${tokenService.getToken()}`
+        }
+    })
+    return res.json()
+}
+
+
 // async function createTerm(termData, id) {
 //     console.log(id)
 //     const res = await fetch(`${BASE_URL}/${id}/terms`, {
@@ -38,5 +50,6 @@ async function getAll() {
 export { 
     create,
     getAll,
+    deleteCard
     // createTerm
 }
