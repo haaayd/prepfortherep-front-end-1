@@ -3,7 +3,14 @@ const PostCard = ({card}) => {
     <>
       <div className="card">
           <div className="card-body">
-            <h2>{card.title}</h2>
+            <h1>Title:
+              {card.title}</h1>
+            <p>Term:
+              {card.term}</p>
+            <p>DefinitIon:
+              {card.definition}</p>
+            {/* <p>Mastered:
+              {card.m = true ? '' : false } </p> */}
 
           </div>
       </div>

@@ -21,21 +21,22 @@ async function getAll() {
     })
     return res.json()
 }
-async function createTerm(termData, cardId) {
-    const res = await fetch(`${BASE_URL}/${cardId}/terms`, {
-        method: "POST",
-        headers: { 
-        'Authorization': `Bearer ${tokenService.getToken()}`,
-        'Content-Type': 'application/json'
-    },
-        body: JSON.stringify(termData)
-    })
-    return await res.json()
-}
+// async function createTerm(termData, id) {
+//     console.log(id)
+//     const res = await fetch(`${BASE_URL}/${id}/terms`, {
+//         method: "POST",
+//         headers: { 
+//         'Authorization': `Bearer ${tokenService.getToken()}`,
+//         'Content-Type': 'application/json'
+//     },
+//         body: JSON.stringify(termData)
+//     })
+//     return await res.json()
+// }
 
 
 export { 
     create,
     getAll,
-    createTerm
+    // createTerm
 }
