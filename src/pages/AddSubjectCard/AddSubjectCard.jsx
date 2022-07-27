@@ -35,6 +35,7 @@ function AddSubjectCard(props) {
     return !(title)
   }
 
+
   return (
     <>
       <h1>Add a Card</h1>
@@ -116,3 +117,4 @@ function AddSubjectCard(props) {
 }
 
 export default AddSubjectCard
+
