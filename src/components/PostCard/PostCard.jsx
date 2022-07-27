@@ -1,4 +1,4 @@
-const PostCard = ({card}) => {
+const PostCard = ({card, handleDeleteCard, user}) => {
   return (  
     <>
       <div className="card">
@@ -13,12 +13,18 @@ const PostCard = ({card}) => {
               {card.m = true ? 'checked' : false } </p> */}
 
           </div>
+          {user?.profile === card.owner?._id &&
+
           <div className="d-btn">
-            <button className="del">
+            <button 
+              className="del"
+              onClick={() => handleDeleteCard(card._id)}
+              >
               X
             </button>
 
           </div>
+          }
       </div>
     
     </>
