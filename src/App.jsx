@@ -1,15 +1,20 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
-import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
+import AddSubjectCard from './pages/AddSubjectCard/AddSubjectCard'
+import * as subjectCardService from "./services/subjectCardService"
+import Cards from './pages/Cards/Cards'
+// import AddTerm from './pages/AddTerm/AddTerm'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
+  const [cards, setCards] = useState([])
+  // const [terms, setTerms] = useState([])
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -18,15 +23,51 @@ const App = () => {
     navigate('/')
   }
 
+  useEffect(() => {
+    const fetchAllCards = async () => {
+      const cardData = await subjectCardService.getAll()
+      setCards(cardData)
+    }
+    fetchAllCards()
+  }, [] )
+
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
   }
+
+  const handleAddCard = async cardData => {
+    const newCard = await subjectCardService.create(cardData)
+    setCards([...cards, newCard])
+    navigate("/")
+  }
+
+  const handleDeleteCard = async id => {
+    const deletedCard = await subjectCardService.deleteCard(id)
+    setCards(cards.filter(card => card._id !== deletedCard._id))
+  }
+  // const handleAddTerm = async termData => {
+  //   const newTerm = await subjectCardService.createTerm(termData)
+  //   setTerms([...terms, newTerm])
+  //   // navigate("/terms")
+  // }
 
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Landing user={user} />} />
+        <Route 
+          path="/add" 
+          element={<AddSubjectCard 
+          handleAddCard={handleAddCard} />}
+          />
+        <Route 
+          path="/" 
+          element={<Cards cards={cards} handleDeleteCard={handleDeleteCard} user={user}/>}
+          />
+        {/* <Route 
+          path="/:id/terms" 
+          element={<AddTerm terms={terms} handleAddTerm={handleAddTerm} />}
+          /> */}
         <Route
           path="/signup"
           element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
